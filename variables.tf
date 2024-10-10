@@ -7,6 +7,11 @@ variable "cidr_block" {
   default     = "10.0.42.0/24"
   description = "The CIDR block for the VPC."
   type        = string
+
+  validation {
+    condition     = provider::assert::cidrv4(var.cidr_block)
+    error_message = "CIDR block must be a valid /24."
+  }
 }
 
 variable "subnets" {
@@ -33,6 +38,13 @@ variable "subnets" {
     availability_zone = string
     public            = optional(bool, false)
   }))
+
+  validation {
+    condition = alltrue([
+      for k, v in var.subnets : provider::assert::cidrv4(v.cidr_block)
+    ])
+    error_message = "Subnet CIDR blocks must all be valid IPv4 CIDR network addresses."
+  }
 }
 
 variable "enable_igw" {

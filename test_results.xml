@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuites>
+  <testsuite name="tests/defaults.tftest.hcl" tests="1" skipped="0" failures="1" errors="0">
+    <testcase name="defaults" classname="tests/defaults.tftest.hcl" time="1.180753709">
+      <failure message="Test run failed"></failure>
+      <system-err><![CDATA[
+Error: Test assertion failed
+
+  on tests/defaults.tftest.hcl line 11:
+  (source code not available)
+
+The default subnet count is expected to be 3.
+]]></system-err>
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/no_igw.tftest.hcl" tests="1" skipped="0" failures="0" errors="0">
+    <testcase name="no_igw" classname="tests/no_igw.tftest.hcl" time="0.5541245"></testcase>
+  </testsuite>
+</testsuites>
